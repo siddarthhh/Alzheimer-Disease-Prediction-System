@@ -1,0 +1,73 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Prediction</title>
+</head>
+<body>
+    <h2>Upload Image</h2>
+    <form id="image-form" enctype="multipart/form-data">
+        <input type="file" id="image-input" name="image">
+        <button type="submit">Predict</button>
+    </form>
+    <div id="prediction-result"></div>
+
+    <script>
+        document.getElementById('image-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var formData = new FormData();
+            formData.append('image', document.getElementById('image-input').files[0]);
+
+            fetch('/predict/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('prediction-result').innerText = 'Predicted Label: ' + data.predicted_label;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Prediction</title>
+</head>
+<body>
+    <h2>Upload Image</h2>
+    <form id="image-form" enctype="multipart/form-data">
+        <input type="file" id="image-input" name="image">
+        <button type="submit">Predict</button>
+    </form>
+    <div id="prediction-result"></div>
+
+    <script>
+        document.getElementById('image-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            var formData = new FormData();
+            formData.append('image', document.getElementById('image-input').files[0]);
+
+            fetch('/predict/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('prediction-result').innerText = 'Predicted Label: ' + data.predicted_label;
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
